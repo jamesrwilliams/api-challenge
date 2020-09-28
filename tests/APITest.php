@@ -19,9 +19,9 @@ class APITest extends TestCase {
 
     public function testForIncorrectVerbOnStoreID() {
         $response = $this->call('POST', '/stores/1/products');
-        $this->assertEquals(405, $response->status());
+        $this->assertEquals(404, $response->status());
         $response = $this->call('PUT', '/stores/1/products');
-        $this->assertEquals(405, $response->status());
+        $this->assertEquals(404, $response->status());
     }
 
     public function testShopify()
