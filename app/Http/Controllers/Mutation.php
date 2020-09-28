@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 class Mutation extends Controller
 {
 
+    /**
+     * @param $platform <String> The platform name the data is from
+     * @param $data <Object> The raw API response object.
+     *
+     * @return array|mixed|null
+     */
     public function mutate($platform, $data) {
         switch ($platform) {
             case 'shopify':
@@ -16,11 +22,13 @@ class Mutation extends Controller
         }
     }
     /**
-     * @param $data
+     * Mutate WooCommerce data into our standardised response
      *
-     * @return mixed
+     * @param $data Object The API data.
+     *
+     * @return array Our response object.
      */
-    private function woocommerce($data) {
+    private static function woocommerce($data) {
 
         $map = function($variants) {
             $output = [];
@@ -53,11 +61,13 @@ class Mutation extends Controller
     }
 
     /**
-     * @param $data
+     * Mutate Shopify data into our standardised response
      *
-     * @return mixed
+     * @param $data Object The API data.
+     *
+     * @return array Our response object.
      */
-    private function shopify($data) {
+    private static function shopify($data) {
 
         function mapVariants($variants) {
             $output = [];

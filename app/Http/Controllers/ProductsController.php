@@ -7,6 +7,13 @@ use App\Http\Controllers\Mutation as Mutation;
 class ProductsController extends Controller
 {
 
+    /**
+     * Entry point for the
+     *
+     * @param $storeId <string>
+     *
+     * @return Object Our standardised response object.
+     */
     public function storeProducts($storeId) {
 
         $type = $this->queryStoreType($storeId);
@@ -50,6 +57,11 @@ class ProductsController extends Controller
 
     }
 
+    /**
+     * @param $type <string> The platform type to load our fake data.
+     *
+     * @return <object> The unique platform response object.
+     */
     private function loadData($type) {
         $filePath = storage_path('app/'. $type . '-fake.json');
         return json_decode(file_get_contents($filePath), true);
