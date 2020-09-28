@@ -18,17 +18,9 @@ An API built on [Laravel Lumen](https://lumen.laravel.com/) for producing a stan
 
 ## Getting started
 
-First install the project dependencies using [composer](https://getcomposer.org), by running:
-
-```
-composer install
-```
-
-Then start the application server by running the following command:
-
-```
-php -S localhost:8000 -t public
-```
+1. First install the project dependencies using [composer](https://getcomposer.org), by running: `composer install`
+2. Copy the `.env.example` to create a new `.env` file in the root directory (no changes needed),
+3. Then start the application server by running the following command: `php -S localhost:8000 -t public`
 
 To add additional API endpoints see the [`./routes/web.php`](./routes/web.php) file.
 

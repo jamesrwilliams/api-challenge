@@ -1,2 +1,5 @@
 *
 !.gitignore
+!shopify-fake.json
+!stores.json
+!woocommerce-fake.json
