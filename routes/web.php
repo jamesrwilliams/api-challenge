@@ -11,16 +11,29 @@
 |
 */
 
+/**
+ * Pass any API calls to our API endpoint to the ProductsController
+ */
 $router->get('/stores/{storeID}/products', 'ProductsController@storeProducts');
 
 /**
- * Catch all route for any other requests.
+ * Catch all HTTP verbs for all routes and 404 them for now. Don't want to give away any 500s
  */
-$router->get('/{any:.*}', function() {
-   return response()->json([
-       'error' => [
-           'code' => '404',
-           'message' => 'Not found'
-       ]
-   ], 404);
-});
+$callback = function () {
+    return response()->json([
+        'error' => [
+            'code' => '404',
+            'message' => 'Not found'
+        ]
+    ], 404);
+};
+
+$catchAllRoute = '/{any:.*}';
+
+$router->get($catchAllRoute, $callback);
+$router->post($catchAllRoute, $callback);
+$router->put($catchAllRoute, $callback);
+$router->patch($catchAllRoute, $callback);
+$router->delete($catchAllRoute, $callback);
+$router->options($catchAllRoute, $callback);
+
